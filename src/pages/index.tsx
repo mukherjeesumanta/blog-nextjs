@@ -1,118 +1,121 @@
+'use client'
+
+import { FC } from 'react'
+import Head from 'next/head'
 import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import { Parallax } from 'react-scroll-parallax'
+import { useDispatch, Provider } from 'react-redux'
+import Navbar from '@/components/navbar/Navbar'
+import DestinationsCarousel from '@/components/destinations-carousel/DestinationsCarousel'
+import ArticlesSection from '@/components/articles-section/ArticlesSection'
+import ArticlesCarousel from '@/components/articles-carousel/ArticlesCarousel'
+import Hero from '@/components/hero/Hero'
+import Footer from '@/components/footer/Footer'
+import connectMongo from '@/database/conn'
+import Article from '@/model/Article'
+import storePublic from '@/globalRedux/public/store'
 
-const inter = Inter({ subsets: ['latin'] })
+import styles from '@/styles/Home.module.css'
+import brandImage from '@/assets/our-brand.jpg'
 
-export default function Home() {
-  return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+const Home: FC<{ articles: string }> = ({ articles }) => {
+    const isArabic = false
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+    return (
+        <Provider store={storePublic}>
+            <Head>
+                <title>Riyadh Air | The future of travel</title>
+                <meta
+                    name="description"
+                    content="Riyadh Air aims to make air travel as innovative as possible, constantly pushing for more, for better, and for a new standard of excellence."
+                />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+                />
+            </Head>
+            <main className="ltr" dir="ltr">
+                <Navbar />
+                <Hero />
+                <section
+                    id="section-vision"
+                    className={`flex ${styles['vision']}`}
+                >
+                    <h2 className="flex-1 pr-5 wow animate__animated animate__fadeInUp">
+                        Driven by an ambitious vision for the future of travel
+                    </h2>
+                    <p className="flex-1 wow animate__animated animate__fadeIn">
+                        We are working with boundless determination to make air
+                        travel as innovative as possible, constantly pushing for
+                        more, and a new standard of excellence. Riyadh Air will
+                        optimize the best digital technologies to deliver
+                        exceptional travel experiences to our guests.
+                    </p>
+                </section>
+                <DestinationsCarousel />
+                <section className={`${styles['brand']}`}>
+                    <div className={styles['brand__desc']}>
+                        <h2>Our Brand</h2>
+                        <p>
+                            Inspired by the <strong>lavender blossoms</strong>{' '}
+                            that carpet Saudi Arabia, we&rsquo;ve chosen this
+                            color because it symbolizes Saudi generosity and its
+                            authentic hospitality.
+                        </p>
+                        <p>
+                            We looked to the airplane window for inspiration;
+                            Riyadh Air will serve as Saudi Arabia&rsquo;s window
+                            to the world. The movement of birds&rsquo;{' '}
+                            <strong>wings in flight</strong> and the elegant
+                            curves of <strong>Arabic calligraphy</strong>, an
+                            integral pillar of Saudi culture, are also essential
+                            parts of the Riyadh Air brand.
+                        </p>
+                        <p>
+                            <strong>
+                                Riyadh Air will take flight toward the future of
+                                aviation.
+                            </strong>
+                        </p>
+                    </div>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+                    <div className={styles['brand__img']}>
+                        <Parallax speed={10} className="custom-parallax">
+                            <Image src={brandImage} alt="brand image" />
+                        </Parallax>
+                    </div>
+                </section>
+                <section className={`${styles['articles']}`}>
+                    <h2>Latest News</h2>
+                    {/* <ArticlesSection articles={articles} /> */}
+                    <ArticlesCarousel />
+                </section>
+                <Footer />
+            </main>
+        </Provider>
+    )
 }
+
+export default Home
+
+/* export async function getServerSideProps() {
+    await connectMongo().catch((error) => console.log(error))
+
+    const articles = await Article.find(
+        { isPublished: true },
+        {
+            _id: 1,
+            enTitle: 1,
+            enSlug: 1,
+            createdAt: 1,
+            createdBy: 1,
+            isPublished: 1
+        }
+    )
+
+    return {
+        props: {
+            articles: JSON.stringify(articles)
+        }
+    }
+} */

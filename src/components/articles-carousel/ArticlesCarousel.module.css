@@ -1,0 +1,64 @@
+.container {
+  /* display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); */
+  /* gap: 1.5rem; */
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -0.5rem;
+}
+.article__card {
+  flex: 0 0 auto;
+  width: 33.33333%;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.article__card_container {
+  background: #fff;
+}
+.article__card-image {
+  transition: all 0.2s ease-in-out;
+}
+.article__card-image:hover {
+  transform: scale(1.01);
+  opacity: 0.3;
+  filter: grayscale(0);
+  display: block;
+}
+.article__card-desc {
+  padding: 24px;
+  min-height: 6rem;
+}
+
+.article__card-desc p {
+  @apply text-ellipsis overflow-hidden;
+  /* font-family: 'Poppins'; */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.article__card-footer {
+  padding: 0 24px 24px;
+  display: flex;
+}
+
+
+@media screen and (max-width: 800px) {
+  .article__card-image img {
+    width: 100%;
+  }
+
+  .article__card {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .article__card {
+    width: 100%;
+  }
+}

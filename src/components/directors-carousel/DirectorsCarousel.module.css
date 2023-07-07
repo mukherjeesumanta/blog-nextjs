@@ -1,0 +1,17 @@
+.directors__card {
+  display: flex;
+  flex-direction: column;
+  cursor: grab;
+  align-items: center;
+  color: #fff;
+}
+
+.directors__card-image img {
+  display: block;
+  margin-bottom: 24px;
+}
+
+.directors__card-desc p {
+  margin-bottom: 8px;
+  color: #fff;
+}

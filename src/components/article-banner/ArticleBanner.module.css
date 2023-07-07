@@ -1,0 +1,38 @@
+.article-banner {
+  padding: 0 15%; /* calc(var(--container-gutter) * 3.5) */;
+  padding-top: calc(var(--container-gutter) * 1.5);
+  background-color: #fff; /* var(--background-shade-surface); */
+}
+.article-banner p {
+}
+.article-banner h1 {
+  font-size: 48px;
+  line-height: 56px;
+}
+
+@media screen and (max-width: 1180px) {
+  .article-banner {
+    padding-top: 150px;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .article-banner p {
+    margin-bottom: 18px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .article-banner {
+    padding: 150px var(--container-gutter) 64px;
+  }
+
+  .article-banner p {
+    margin-bottom: 18px;
+  }
+
+  .article-banner h1 {
+    font-size: 36px;
+    line-height: 42px;
+  }
+}

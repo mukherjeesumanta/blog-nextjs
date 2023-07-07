@@ -1,0 +1,98 @@
+.mobile-nav {
+  display: none;
+}
+
+.mobile-nav__screen {
+  position: fixed;
+  z-index: 1111;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: url('../../assets/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mobile-nav__screen-logo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mobile-nav__screen-navItems {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.mobile-nav__screen-navItems ul li a {
+  color: #fff;
+  font-size: 1.2rem;
+  line-height: 32px;
+  margin-bottom: 32px;
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.mobile-nav__screen-footer {
+  text-align: center;
+}
+
+.mobile-nav__screen-footer p {
+  color: #fff;
+  margin-top: 46px;
+}
+
+.mobile-nav__screen-footer button {
+  display: block;
+  margin: 0 auto;
+}
+
+.mobile-nav__screen-footer a {
+  display: block;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 1180px) {
+  .mobile-nav {
+    display: inline-block;
+    width: 2rem;
+  }
+
+  .mobile-nav__screen-footer a {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+@media screen and (max-width: 991px) {
+  .mobile-nav__screen-logo img {
+    width: 200px;
+    height: 55px;
+  }
+
+  .mobile-nav__screen-logo button img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .mobile-nav__screen {
+    padding: 30px;
+  }
+
+  .mobile-nav button img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .mobile-nav__screen-navItems ul li a {
+    font-size: 0.8rem;
+    line-height: 21px;
+  }
+}

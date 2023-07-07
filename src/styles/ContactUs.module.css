@@ -1,0 +1,20 @@
+.contact-form {
+  padding: var(--container-gutter);
+  background-color: var(--background-shade-surface);
+}
+
+.contact-form p {
+  text-align: center;
+}
+
+@media screen and (max-width: 1080px) {
+  .contact-form {
+    padding-bottom: 64px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .contact-form p {
+    padding-top: 32px;
+  }
+}

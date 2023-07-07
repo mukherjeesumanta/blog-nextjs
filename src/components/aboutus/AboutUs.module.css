@@ -1,0 +1,335 @@
+.image-desc-card {
+  display: flex;
+  overflow: hidden;
+  background-color: var(--background-shade-surface);
+}
+
+.image-desc-card-ceo {
+  background-color: var(--primary-color);
+}
+
+.image-desc-card__img {
+  overflow: hidden;
+}
+
+.image-desc-card__img img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-desc-card__img-ceo img {
+  transform: scale(1);
+}
+
+.ceo-section * {
+  color: #fff;
+}
+
+.image-desc-card__desc {
+  padding: var(--container-gutter);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.image-desc-card__desc h2 {
+  padding-bottom: 24px;
+}
+
+.image-desc-card__desc p {
+  font-size: 16px;
+  line-height: 24px;
+  padding-bottom: 24px;
+}
+
+.image-desc-card__desc ul {
+  padding-bottom: 24px;
+}
+
+.image-desc-card__desc ul li {
+  list-style-type: disc;
+  list-style-position: inside;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.travel {
+  display: flex;
+  background-color: #fff;
+}
+
+.travel__img {
+  min-width: 30%;
+  overflow: hidden;
+}
+
+.travel__img img {
+  object-fit: cover;
+}
+
+.travel__desc {
+  padding-left: var(--container-gutter);
+  padding-right: var(--container-gutter);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.travel__desc h2 {
+  padding-bottom: 24px;
+}
+
+.travel__desc p {
+  font-size: 16px;
+  line-height: 24px;
+  padding-bottom: 24px;
+}
+
+.font-quiche {
+  font-family: 'quiche-sans';
+}
+
+.quote {
+  background: url('../../assets/background.jpg');
+  padding: var(--container-gutter);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.quote__no-bg {
+  background: #fff;
+}
+
+.quote p {
+  color: #fff;
+  font-size: 32px;
+  line-height: 40px;
+  width: 80%;
+  margin: 0 auto 24px;
+}
+
+.quote__no-bg p {
+  color: var(--primary-color);
+}
+
+.inspiration {
+  display: flex;
+  background-color: var(--background-shade-surface);
+  padding-top: var(--container-gutter);
+  padding-bottom: var(--container-gutter);
+}
+
+.inspiration__img {
+  min-width: 60%;
+}
+
+.inspiration__desc {
+  padding-left: var(--container-gutter);
+  padding-right: var(--container-gutter);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.inspiration__desc h2 {
+  padding-bottom: 24px;
+}
+
+.inspiration__desc p {
+  font-size: 16px;
+  line-height: 24px;
+  padding-bottom: 24px;
+}
+
+.numbers {
+  display: flex;
+  background-color: var(--background-shade-surface);
+}
+
+.numbers h5 {
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.numbers__destinations {
+  padding: var(--container-gutter);
+  background-color: #fff;
+  min-width: 30%;
+}
+
+.numbers__jobs {
+  padding: var(--container-gutter);
+  background-color: var(--background-shade-surface);
+}
+
+.image-desc-card h4 {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.directors {
+  display: flex;
+  background: #fff;
+  justify-content: center;
+  padding: var(--container-gutter) 170px;
+  align-items: center;
+  margin-top: -1px;
+}
+
+.directors h2 {
+  padding: 0 30px;
+  min-width: 60%;
+}
+
+.directors p {
+  font-size: 16px;
+  line-height: 24px;
+  padding: 0 30px;
+  text-align: justify;
+}
+
+.directors-carousel {
+  background: url('../../assets/background.jpg');
+  padding: var(--container-gutter);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+.directors-carousel h2 {
+  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 24px;
+  display: inline-block;
+  color: #fff;
+  border-bottom: 2px solid #fff;
+  margin-bottom: 42px;
+}
+
+@media screen and (max-width: 1180px) {
+  .image-desc-card__desc {
+    padding: 34px var(--container-gutter);
+  }
+
+  .directors p {
+    text-align: left;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .image-desc-card__img {
+    /* margin-top: 50px; */
+  }
+
+  .directors h2 {
+    min-width: 50%;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .image-desc-card__img {
+    /* margin-top: 100px; */
+  }
+
+  .directors h2 {
+    padding-left: 0;
+  }
+
+  .directors p {
+    padding-right: 0;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .image-desc-card {
+    flex-direction: column;
+  }
+
+  .travel__img,
+  .image-desc-card__img {
+    margin-top: 0px;
+    max-height: 50vh;
+  }
+
+  .image-desc-card__img img {
+    transform: scale(1);
+    width: 100%;
+  }
+
+  .travel {
+    flex-direction: column-reverse;
+  }
+
+  .travel__img,
+  .travel__img img {
+    width: 100%;
+  }
+
+  .travel__img img {
+    margin-bottom: 32px;
+  }
+
+  .travel__desc p {
+    padding-bottom: 64px;
+  }
+
+  .quote h2 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .quote {
+    padding: 64px var(--container-gutter);
+  }
+
+  .numbers {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .numbers__destinations,
+  .numbers__jobs {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .numbers__destinations h1,
+  .numbers__jobs h1 {
+    font-size: 46px;
+    line-height: 52px;
+    margin-bottom: 16px;
+  }
+
+  .inspiration {
+    padding: 0 0 64px;
+    flex-direction: column-reverse;
+  }
+
+  .inspiration__img {
+    min-width: 100%;
+    margin-bottom: 32px;
+  }
+
+  .image-desc-card-ceo h4 {
+    margin-bottom: 32px;
+  }
+
+  .directors {
+    flex-direction: column;
+    padding: 64px var(--container-gutter);
+    align-items: flex-start;
+  }
+
+  .directors p {
+    padding: 20px 0 0;
+  }
+
+  .quote p {
+    font-size: 1.5rem;
+    line-height: 32px;
+  }
+}

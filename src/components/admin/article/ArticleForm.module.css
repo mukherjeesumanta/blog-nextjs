@@ -1,0 +1,85 @@
+.navmenu {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.active {
+  border-bottom: solid var(--primary-color) 2px;
+}
+
+.title {
+  font-family: 'quiche-sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.info {
+  border: solid var(--primary-color) 1px;
+  border-radius: 50%;
+  height: 15px;
+  display: inline-block;
+  width: 15px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  position: relative;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  position: absolute;
+  z-index: 1;
+  width: 150px;
+  color: var(--primary-color);
+  border: solid var(--primary-color) 1px;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 5px;
+  font-weight: normal;
+  line-height: 17px;
+  font-size: 12px;
+}
+
+.hover-text:hover .tooltip-text {
+  visibility: visible;
+}
+
+.top {
+  top: 0;
+  left: 50%;
+  transform: translate(-25%, -110%);
+}
+
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.top::after {
+  top: 101%;
+  left: 21%;
+}
+
+.divider {
+  border: solid #ccc 1px;
+  margin: 0.5rem 0;
+}
+.mandatory {
+  color: red;
+}
+.disabled {
+  color: #ccc;
+  border-color: #ccc;
+}

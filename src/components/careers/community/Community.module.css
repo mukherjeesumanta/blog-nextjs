@@ -1,0 +1,13 @@
+.community-section {
+  @apply bg-[url('../../../assets/join-community.png')] bg-cover;
+  background-position: 46% center;
+}
+
+.desc_section {
+  @apply w-[80%] absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] text-center;
+}
+.career-btn {
+  @apply bg-slate-50 uppercase text-[.8rem] font-bold tracking-[.16rem] w-auto not-italic leading-[24px] box-border;
+  padding: 8px 10px;
+  -webkit-appearance: button;
+}

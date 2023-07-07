@@ -1,0 +1,17 @@
+.heights-section {
+  @apply bg-[#F5F8FF];
+}
+
+.section-desc {
+  padding: 5%;
+}
+
+.section-desc p {
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 640px) {
+  .section-desc {
+    padding: 5% 10%;
+  }
+}
