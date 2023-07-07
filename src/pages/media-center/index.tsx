@@ -12,7 +12,6 @@ import Article from '@/model/Article'
 import storePublic from '@/globalRedux/public/store'
 
 import styles from '@/styles/MediaCenter.module.css'
-import ArticlesCarousel from '@/components/articles-carousel/ArticlesCarousel'
 
 
 const MediaCenter: FC<{articles: string}> = ({ articles }) => {
@@ -20,7 +19,7 @@ const MediaCenter: FC<{articles: string}> = ({ articles }) => {
     return (
         <Provider store={storePublic}>
             <Head>
-                <title>Media Center | Riyadh Air</title>
+                <title>Blogs by Sumanta Mukherjee</title>
                 <meta
                     name="description"
                     content="The place to find out more about the airline that’s redefining what flying can be."
@@ -35,16 +34,15 @@ const MediaCenter: FC<{articles: string}> = ({ articles }) => {
                 <Banner
                     title={
                         <>
-                            Media <br />
-                            center
+                            Web Development<br />
+                            Blog Posts
                         </>
                     }
-                    pageDesc="Stay up to date on the latest news about Riyadh Air"
+                    pageDesc="Blogs by Sumanta Mukherjee"
                 />
                 <section className={`${styles['articles']}`}>
                     <h2>Articles</h2>
-                    {/* <ArticlesSection articles={articles} /> */}
-                    <ArticlesCarousel />
+                    <ArticlesSection articles={articles} />
                 </section>
                 <Footer />
             </main>
@@ -54,7 +52,7 @@ const MediaCenter: FC<{articles: string}> = ({ articles }) => {
 
 export default MediaCenter
 
-/* export async function getServerSideProps() {
+export async function getServerSideProps() {
     await connectMongo().catch((error) => console.log(error))
 
     const articles = await Article.find(
@@ -75,4 +73,3 @@ export default MediaCenter
         }
     }
 }
- */

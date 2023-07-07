@@ -1,6 +1,6 @@
 .imgStyle {
   width: 50%;
-  background-image: url('../assets/cloud.png');
+  background-image: url('../assets/img/comp.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -23,14 +23,14 @@
 .input_group {
   /* background-color: #fff;
   border: 0;
-  border-bottom: solid #230751 2px; */
+  border-bottom: solid #004940 2px; */
 }
 
 .input_text {
   @apply w-full py-4 px-6 bg-white;
   @apply focus:outline-none border-none;
   border: 0;
-  border-bottom: solid #230751 2px;
+  border-bottom: solid #004940 2px;
   color: var(--primary-color);
 }
 .input_text::placeholder {

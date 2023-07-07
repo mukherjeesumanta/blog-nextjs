@@ -1,9 +1,3 @@
-export const getLanguage = (pathname: string) => {
-  return {
-    isArabic: pathname.startsWith('/ar'),
-    redirectTo: pathname.startsWith('/ar') ? pathname.replace('/ar', '') || '/' : '/ar' + pathname,
-  };
-};
 
 export const toShortFormat = function (dateInput: Date | string, lang: 'en' | 'ar') {
   const date = new Date(dateInput)

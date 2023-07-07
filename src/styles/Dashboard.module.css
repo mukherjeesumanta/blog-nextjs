@@ -2,8 +2,8 @@
   background-color: #fff !important;
 }
 .logoImg {
-  background: url('../assets/riyahd_air_logo_en.svg') no-repeat;
-  background-size: 15% 60%;
+  background: url('../assets/img/logo-header.jpg') no-repeat;
+  background-size: auto 60%;
   background-position: 1% center;
   z-index: 1;
 }
@@ -12,7 +12,7 @@
 }
 
 .header {
-  background-color: #230751;
+  background-color: #004940;
 }
 .borderGray {
   border: solid gray 1px;

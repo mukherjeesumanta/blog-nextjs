@@ -33,12 +33,10 @@ const DashboardLayout: React.FunctionComponent<LayoutProps> = ({
     return (
         <>
             <Head>
-                {/* <style>@import url('https://use.typekit.net/wog8heu.css');</style>
-        <style>@import url('https://fonts.googleapis.com/css?family=Poppins');</style>
-        <style>@import url('https://fonts.googleapis.com/css?family=Noto+Kufi+Arabic');</style> */}
+                
             </Head>
             <div className={'w-full bg-slate-50 ' + styles['bg-none']}>
-                <div className="w-full  bg-[#230751]">
+                <div className="w-full  bg-[color:var(--primary-color)]">
                     <div
                         className={`flex title text-center ${styles.logoImg} items-stretch py-2`}
                     >
@@ -66,7 +64,7 @@ const DashboardLayout: React.FunctionComponent<LayoutProps> = ({
                                     <Link
                                         href=""
                                         onClick={handleSignOut}
-                                        className="text-[#230751] px-9 py-1 bg-transparent"
+                                        className="text-[#004940] px-9 py-1 bg-transparent"
                                     >
                                         Sign Out
                                     </Link>
@@ -81,7 +79,7 @@ const DashboardLayout: React.FunctionComponent<LayoutProps> = ({
                     </div>
                 </div>
             </div>
-            <div className="w-full h-20 bg-[#230751]"></div>
+            <div className="w-full h-20 bg-[color:var(--primary-color)]"></div>
         </>
     )
 }

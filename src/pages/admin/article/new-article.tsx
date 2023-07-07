@@ -29,7 +29,7 @@ export async function getServerSideProps({ req }: GetSessionParams) {
   if (!session) {
     return {
       redirect: {
-        destination: '/admin/login',
+        destination: '/admin/',
         permanent: false
       }
     }

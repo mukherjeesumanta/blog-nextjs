@@ -1,4 +1,28 @@
 @tailwind base;
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary-color) var(--primary-color);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+
+*::-webkit-scrollbar-track {
+  background: #303030;
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  /* border-radius: 14px; */
+  /* border: 3px solid var(--primary-color); */
+}
+
 @tailwind components;
 @tailwind utilities;
 
@@ -7,78 +31,6 @@
     @apply scroll-smooth;
   }
 }
-/*
- * quiche-sans:
- *   - http://typekit.com/eulas/00000000000000007735cad5
- *   - http://typekit.com/eulas/00000000000000007735cad6
- *   - http://typekit.com/eulas/00000000000000007735cae0
- *   - http://typekit.com/eulas/00000000000000007735cae2
- *
- * © 2009-2022 Adobe Systems Incorporated. All Rights Reserved.
- */
-
-@import url('https://p.typekit.net/p.css?s=1&k=wog8heu&ht=tk&f=43733.43734.43737.43738&a=47293810&app=typekit&e=css');
-
-@font-face {
-  font-family: 'quiche-sans';
-  src: url('https://use.typekit.net/af/c52a24/00000000000000007735cad5/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
-      format('woff2'),
-    url('https://use.typekit.net/af/c52a24/00000000000000007735cad5/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
-      format('woff'),
-    url('https://use.typekit.net/af/c52a24/00000000000000007735cad5/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
-      format('opentype');
-  font-display: auto;
-  font-style: normal;
-  font-weight: 400;
-  font-stretch: normal;
-}
-
-@font-face {
-  font-family: 'quiche-sans';
-  src: url('https://use.typekit.net/af/b2e6be/00000000000000007735cad6/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
-      format('woff2'),
-    url('https://use.typekit.net/af/b2e6be/00000000000000007735cad6/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
-      format('woff'),
-    url('https://use.typekit.net/af/b2e6be/00000000000000007735cad6/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
-      format('opentype');
-  font-display: auto;
-  font-style: italic;
-  font-weight: 400;
-  font-stretch: normal;
-}
-
-@font-face {
-  font-family: 'quiche-sans';
-  src: url('https://use.typekit.net/af/c7c5f3/00000000000000007735cae0/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
-      format('woff2'),
-    url('https://use.typekit.net/af/c7c5f3/00000000000000007735cae0/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
-      format('woff'),
-    url('https://use.typekit.net/af/c7c5f3/00000000000000007735cae0/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
-      format('opentype');
-  font-display: auto;
-  font-style: normal;
-  font-weight: 700;
-  font-stretch: normal;
-}
-
-@font-face {
-  font-family: 'quiche-sans';
-  src: url('https://use.typekit.net/af/6c2785/00000000000000007735cae2/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3')
-      format('woff2'),
-    url('https://use.typekit.net/af/6c2785/00000000000000007735cae2/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3')
-      format('woff'),
-    url('https://use.typekit.net/af/6c2785/00000000000000007735cae2/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3')
-      format('opentype');
-  font-display: auto;
-  font-style: italic;
-  font-weight: 700;
-  font-stretch: normal;
-}
-
-.tk-quiche-sans {
-  font-family: 'quiche-sans', sans-serif;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -126,8 +78,8 @@ table {
 }
 
 :root {
-  --primary-color: #230751;
-  --primary-color-light: #4c3874;
+  --primary-color: rgba(36,36,36,1);
+  --primary-color-light: rgba(36,36,36, 0.8);;
   --background-shade-surface: #f4f8ff;
   --container-gutter: 100px;
   --transition-duration: 0.2s;
@@ -139,7 +91,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'quiche-sans', sans-serif;
+  font-family: sans-serif;
   font-style: normal;
   color: var(--primary-color);
 }
@@ -150,7 +102,7 @@ a,
 span,
 button {
   color: var(--primary-color);
-  font-family: 'Poppins', sans-serif;
+  font-family: Arial, Helvetica, sans-serif
 }
 button:disabled,
 button.disabled,
@@ -182,7 +134,7 @@ body,
 }
 
 html {
-  background-color: var(--primary-color);
+  /* background-color: var(--primary-color); */
 }
 
 .rtl {

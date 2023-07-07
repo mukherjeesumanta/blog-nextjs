@@ -1,5 +1,6 @@
 .banner {
-  background: url('../../assets/background.jpg');
+  /* background: linear-gradient(180deg, #00786a, #03dca4, #fff); */
+  background-image: url('../../assets/img/code.jpg');
   padding: 0 var(--container-gutter) 0;
   background-attachment: fixed;
   background-position: center;

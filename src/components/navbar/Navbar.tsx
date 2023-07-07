@@ -3,18 +3,14 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { useScrollDirection } from 'react-use-scroll-direction'
 import MenuList from '@/components/menu-list/MenuList'
-import LanguageSwitcher from '@/components/language-switcher/LanguageSwitcher'
 import MobileNav from '@/components/mobile-nav/MobileNav'
-import { getLanguage } from '@/lib/utils'
 import styles from '@/components/navbar/Navbar.module.css'
-import logoAr from '@/assets/riyahd_air_logo_ar.svg'
-import logoEn from '@/assets/riyahd_air_logo_en.svg'
+import logoEn from '@/assets/img/logo-header.jpg'
 
 const Navbar = ({}) => {
   const router = useRouter()
-  const { isArabic } = getLanguage(router.pathname)
 
-  const isHomePage = ['/', '/ar'].includes(router.pathname)
+  const isHomePage = ['/'].includes(router.pathname)
   const isMediaInnerPage = /media-center\/[^/]*\/?$/.test(router.pathname)
   const { isScrollingDown, isScrollingUp, isScrolling } = useScrollDirection()
   const [hideNavbar, setHideNavbar] = useState(false)
@@ -49,7 +45,7 @@ const Navbar = ({}) => {
       <div
         className={`grid grid-cols-12 ${styles['navbar__animation-wrapper']} ${
           (scrollY > 100 && isHomePage)
-            ? styles['lavender-bg']
+            ? styles['home-bg']
             : ''
         } ${
           !isHomePage
@@ -62,20 +58,19 @@ const Navbar = ({}) => {
         }`}
       >
         <div className={`${styles['nav-logo']}`}>
-          <Image
-            src={isArabic ? logoAr : logoEn}
+          {/* <Image
+            src={logoEn}
             width={200}
             height={55}
-            className={`${styles.logo} ${logoImgCls}`}
-            alt="Riyadhair logo"
-          />
+            className={`${styles.logo}  ${logoImgCls}`}
+            alt="logo"
+          /> */}
         </div>
 
         <nav className={`${styles['nav-menulist']} ${styles['navbar-nav']}`}>
           <MenuList />
         </nav>
         <div className={`${styles['nav-langswitcher']}`}>
-          <LanguageSwitcher />
           <MobileNav />
         </div>
       </div>

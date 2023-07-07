@@ -118,7 +118,7 @@ const ArticleList: FC<ArticleListProps> = ({ title, articleListProp }) => {
             cellRenderer: (props: { data: ArticleType }) => {
                 return (
                     <>
-                        <p className={`${styles['poppins']}`}>
+                        <p className={`${styles['arial']}`}>
                             {props.data.enTitle}
                         </p>
                         <p className={`${styles['noto']}`}>
@@ -138,7 +138,7 @@ const ArticleList: FC<ArticleListProps> = ({ title, articleListProp }) => {
                 //console.log(props)
                 return (
                     <>
-                        <p className={`${styles['poppins']}`}>
+                        <p className={`${styles['arial']}`}>
                             {props.data.enMetaDesc}
                         </p>
                         <p className={`${styles['noto']}`}>
@@ -191,7 +191,7 @@ const ArticleList: FC<ArticleListProps> = ({ title, articleListProp }) => {
         <div
             className="ag-theme-alpine"
             style={{
-                height: '500px',
+                height: '700px',
                 width: 'auto'
             }}
         >

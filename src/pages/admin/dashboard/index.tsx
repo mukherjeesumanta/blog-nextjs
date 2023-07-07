@@ -40,7 +40,7 @@ const Dashboard: FC<PropType> = ({ session, articles }) => {
                     </div>
                 </div>
 
-                <div className="mb-[150px]">
+                <div className="mb-[50px]">
                     <ArticleList
                         title="Article list"
                         articleListProp={JSON.parse(articles)}
@@ -59,7 +59,7 @@ export async function getServerSideProps({ req }: GetSessionParams) {
     if (!session) {
         return {
             redirect: {
-                destination: '/admin/login',
+                destination: '/admin/',
                 permanent: false
             }
         }

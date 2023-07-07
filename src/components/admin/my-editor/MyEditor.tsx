@@ -89,8 +89,8 @@ const MyEditor: FC<PropsType> = (props) => {
                     },
                     fontFamily: {
                         options: [
-                            '"quiche-sans"',
-                            '"Poppins"',
+                            '"sans-serif"',
+                            '"arial"',
                             '"Noto Kufi Arabic"',
                             '"sans-serif"'
                         ]

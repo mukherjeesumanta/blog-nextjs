@@ -5,11 +5,11 @@
 .mobile-nav__screen {
   position: fixed;
   z-index: 1111;
-  width: 100%;
+  width: 50%;
   height: 100%;
   top: 0;
-  left: 0;
-  background: url('../../assets/background.jpg');
+  right: 0;
+  background: url('../../assets/img/gradient.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   padding: 50px;
@@ -71,7 +71,7 @@
 }
 @media screen and (max-width: 991px) {
   .mobile-nav__screen-logo img {
-    width: 200px;
+    width: auto;
     height: 55px;
   }
 

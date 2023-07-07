@@ -49,12 +49,12 @@
 .article-content-center ul {
   padding: 0;
   margin-bottom: calc(var(--container-gutter) * 0.75);
-  font-family: 'Poppins';
+  font-family: 'arial';
   font-style: normal;
   font-weight: 400;
   font-size: 1.25rem;
   line-height: 28px;
-  color: #230751;
+  color: #004940;
 }
 .article-content-center ul li {
   list-style: disc;

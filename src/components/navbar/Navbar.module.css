@@ -10,15 +10,15 @@
   align-items: center;
   padding: 15px calc(var(--container-gutter) / 2);
   transition: all 500ms ease-in-out;
-  background-color: transparent;
+  background-color: rgba(36, 36, 36, 0.8);
 }
 
 .navbar__animation-wrapper-bg {
-  background-color: var(--primary-color);
+  /* background-color: 	rgba(0, 73, 64, 0.7); */
 }
-.lavender-bg {
-  background-color: #817EFF;
-}
+/* .home-bg {
+  background-color: 	rgba(0, 73, 64, 0.5);
+} */
 
 .navbar nav,
 .navbar ul {

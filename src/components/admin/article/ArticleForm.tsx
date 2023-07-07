@@ -4,8 +4,7 @@ import { FC, ReactNode, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import EnglishForm from './EnglishForm'
-import ArabicForm from './ArabicForm'
+import TextContentForm from './TextContentForm'
 import { convertFromRaw, convertToRaw, EditorState } from 'draft-js'
 import { FileType } from '../../../types'
 import { useDispatch, useSelector } from 'react-redux'
@@ -20,9 +19,6 @@ interface ArticleFormProps {
     mode: string
     article?: string
 }
-
-const TAB_EN = 'en'
-const TAB_AR = 'ar'
 
 const fileTypes = [
     'image/apng',
@@ -117,14 +113,8 @@ const ArticleForm: FC<ArticleFormProps> = (props) => {
         enTitle,
         enSlug,
         enMetaDesc,
-        enContentState,
-        arTitle,
-        arSlug,
-        arMetaDesc,
-        arContentState
+        enContentState
     } = useSelector((state: RootState) => state.articleDetail)
-
-    const [selectedTab, setSelectedTab] = useState(TAB_EN)
 
     const enBannerRef = useRef<HTMLInputElement>(null)
     const enThumbnailRef = useRef<HTMLInputElement>(null)
@@ -132,14 +122,7 @@ const ArticleForm: FC<ArticleFormProps> = (props) => {
     let [thumbnailImg, setThumbnailImg] = useState<FileType>({})
     let [bannerImg, setBannerImg] = useState<FileType>({})
 
-    const gettabHandler = (tabName: string) => {
-        return () => {
-            if (tabName === TAB_EN) setSelectedTab(TAB_EN)
-            else if (tabName === TAB_AR) setSelectedTab(TAB_AR)
-        }
-    }
-
-    const saveAndPreview = async (lang: 'en' | 'ar') => {
+    const saveAndPreview = async () => {
         const newData = {
             _id,
             __v,
@@ -151,11 +134,7 @@ const ArticleForm: FC<ArticleFormProps> = (props) => {
             enTitle,
             enSlug,
             enMetaDesc,
-            enContent: enContentState,
-            arTitle,
-            arSlug,
-            arMetaDesc,
-            arContent: arContentState
+            enContent: enContentState
         }
         //console.log(newData)
         const action = props.mode === 'edit' ? 'edit' : 'create'
@@ -172,29 +151,8 @@ const ArticleForm: FC<ArticleFormProps> = (props) => {
         //console.log(res);
 
         if (res.ok) {
-            /* dispatch(
-                setArticleDetails({
-                    _id: '',
-                    enTitle: '',
-                    enSlug: '',
-                    enMetaDesc: '',
-                    enContentState: emptyEnContent,
-                    enContent: JSON.stringify(emptyEnContent),
-                    arTitle: '',
-                    arSlug: '',
-                    arMetaDesc: '',
-                    arContentState: emptyArContent,
-                    arContent: JSON.stringify(emptyArContent),
-                    createdBy: '',
-                    createdAt: '',
-                    lastUpdatedBy: '',
-                    lastUpdatedAt: '',
-                    isPublished: false,
-                    __v: 0
-                })
-            ) */
             //router.push('/admin/dashboard')
-            const previewUrl = `/admin/preview/${lang}/${enSlug}/${_id}`
+            const previewUrl = `/admin/preview/${enSlug}/${_id}`
             window.open(previewUrl, '_blank')
         }
     }
@@ -248,57 +206,30 @@ const ArticleForm: FC<ArticleFormProps> = (props) => {
         }
     }
 
-    const isValidContent = (lang: 'en' | 'ar') => {
-        if (lang === TAB_EN) {
-            if (
-                enTitle &&
-                EditorState.createWithContent(convertFromRaw(enContentState))
-                    .getCurrentContent()
-                    .hasText() &&
-                thumbnailImg.fileName &&
-                thumbnailImg.fileType &&
-                bannerImg.fileName &&
-                bannerImg.fileType
-            ) {
-                return true
-            } else {
-                return false
-            }
+    const isValidContent = () => {
+        if (
+            enTitle &&
+            EditorState.createWithContent(convertFromRaw(enContentState))
+                .getCurrentContent()
+                .hasText() &&
+            thumbnailImg.fileName &&
+            thumbnailImg.fileType &&
+            bannerImg.fileName &&
+            bannerImg.fileType
+        ) {
+            return true
         } else {
-            if (
-                arTitle &&
-                EditorState.createWithContent(convertFromRaw(arContentState))
-                    .getCurrentContent()
-                    .hasText() &&
-                thumbnailImg.fileName &&
-                thumbnailImg.fileType &&
-                bannerImg.fileName &&
-                bannerImg.fileType
-            ) {
-                return true
-            } else {
-                return false
-            }
+            return false
         }
     }
 
     const onEngPreviewClick = () => {
-        if (isValidContent(TAB_EN)) {
+        if (isValidContent()) {
             dispatch(setMiscDetails({ showEnErr: false }))
-            saveAndPreview(TAB_EN)
+            saveAndPreview()
         } else {
             // show error -> pass error prop
             dispatch(setMiscDetails({ showEnErr: true }))
-        }
-    }
-
-    const onArPreviewClick = () => {
-        if (isValidContent(TAB_AR)) {
-            dispatch(setMiscDetails({ showAnErr: false }))
-            saveAndPreview(TAB_AR)
-        } else {
-            // show error -> pass error prop
-            dispatch(setMiscDetails({ showArErr: true }))
         }
     }
 
@@ -318,33 +249,18 @@ const ArticleForm: FC<ArticleFormProps> = (props) => {
                 <div className="navmenu text-center col-span-6">
                     <p className="text-gray-800 text-lg font-bold py-4">
                         <span
-                            className={`${
-                                styles.navmenu
-                            } px-5 py-2 uppercase cursor-pointer ${
-                                selectedTab === TAB_EN ? styles.active : ''
-                            }`}
-                            onClick={gettabHandler(TAB_EN)}
+                            className={`${styles.navmenu} px-5 py-2 uppercase `}
                         >
-                            ENGLISH
-                        </span>
-                        <span
-                            className={`${
-                                styles.navmenu
-                            } px-5 py-2 uppercase cursor-pointer ${
-                                selectedTab === TAB_AR ? styles.active : ''
-                            }`}
-                            onClick={gettabHandler(TAB_AR)}
-                        >
-                            ARABIC
+                            {props.mode === 'edit'
+                                ? 'Edit Article'
+                                : 'New Article'}
                         </span>
                     </p>
                 </div>
                 <div className="col-span-3 text-right"></div>
             </div>
             <div className="grid gap-4 grid-cols-12">
-                <div className="col-span-3">
-                    <p className={styles.title}>New Article</p>
-                </div>
+                <div className="col-span-3"></div>
                 <div className="title text-center col-span-6"></div>
                 <div className="col-span-3 text-right"></div>
             </div>
@@ -375,7 +291,6 @@ const ArticleForm: FC<ArticleFormProps> = (props) => {
                             placeholder="Slug"
                             className="w-full h-10 px-3 py-1 rounded hidden"
                             onChange={thumbnailChangeHandler}
-                            /* {...formik.getFieldProps('metaDescription')} */
                         />
                         {thumbnailImg.fileType && (
                             <ul className="py-3 w-fit inline-block">
@@ -419,7 +334,6 @@ const ArticleForm: FC<ArticleFormProps> = (props) => {
                             placeholder="Slug"
                             className="w-full h-10 px-3 py-1 rounded hidden"
                             onChange={bannerChangeHandler}
-                            /* {...formik.getFieldProps('metaDescription')} */
                         />
                         {bannerImg.fileType && (
                             <ul className="py-3 w-fit inline-block">
@@ -444,14 +358,7 @@ const ArticleForm: FC<ArticleFormProps> = (props) => {
                     </div>
                 </div>
 
-                <EnglishForm
-                    visible={selectedTab === TAB_EN}
-                    onEngPreviewClick={onEngPreviewClick}
-                />
-                <ArabicForm
-                    visible={selectedTab === TAB_AR}
-                    onArPreviewClick={onArPreviewClick}
-                />
+                <TextContentForm onEngPreviewClick={onEngPreviewClick} />
             </form>
         </section>
     )

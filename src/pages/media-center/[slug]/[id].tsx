@@ -26,7 +26,7 @@ const Article: FC<ArticleDetail> = ({ articleData }) => {
     return (
         <>
             <Head>
-                <title>Media Center - Article | Riyadh Air</title>
+                <title>Blogs by Sumanta Mukherjee</title>
                 <meta
                     name="viewport"
                     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"

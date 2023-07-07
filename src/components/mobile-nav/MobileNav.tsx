@@ -2,30 +2,20 @@ import { useState, useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import { getLanguage } from '@/lib/utils'
 import MenuList from '@/components/menu-list/MenuList'
-import LanguageSwitcher from '@/components/language-switcher/LanguageSwitcher'
+
 import menuIcon from '@/assets/menu.svg'
 import styles from '@/components/mobile-nav/MobileNav.module.css'
-import logoEn from '@/assets/riyahd_air_logo_en.svg'
-import logoAr from '@/assets/riyahd_air_logo_ar.svg'
+import logoEn from '@/assets/img/logo-header.jpg'
 import closeIcon from '@/assets/close-icon.svg'
 
 const MobileNavScreen = ({ onClose }: { onClose: () => void }) => {
   const year = new Date().getFullYear()
 
-  const router = useRouter()
-  const { isArabic } = getLanguage(router.pathname)
+  const logo = logoEn
 
-  const logo = isArabic ? logoAr : logoEn
+  
 
-  const copyRightText = isArabic ? (
-    <>
-      <span className="">©2023 طيران الرياض</span> | جميع الحقوق محفوظة
-    </>
-  ) : (
-    '©2023 Riyadh Air | All Rights Reserved'
-  )
   return (
     <div className={`${styles['mobile-nav__screen']}`}>
       <div className={styles['mobile-nav__screen-logo']}>
@@ -40,7 +30,7 @@ const MobileNavScreen = ({ onClose }: { onClose: () => void }) => {
         </nav>
       </div>
       <div className={styles['mobile-nav__screen-footer']}>
-        <p>{copyRightText}</p>
+        <p></p>
       </div>
     </div>
   )
