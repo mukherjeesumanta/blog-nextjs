@@ -5,22 +5,17 @@ import { createSlice } from '@reduxjs/toolkit'
 import { ArticleType } from '@/types'
 import { convertToRaw, EditorState } from 'draft-js';
 
-const initialState:ArticleType = {
+const initialState: ArticleType = {
     _id: '',
     enTitle: '',
     enSlug: '',
     enMetaDesc: '',
     enContentState: convertToRaw(EditorState.createEmpty().getCurrentContent()),
     enContent: '',
-    arTitle: '',
-    arSlug: '',
-    arMetaDesc: '',
-    arContentState: convertToRaw(EditorState.createEmpty().getCurrentContent()),
-    arContent: '',
     createdBy: '',
     createdAt: '',
-    lastUpdatedBy: '',
-    lastUpdatedAt: '',
+    thumbnailUrl: '',
+    bannerUrl: '',
     isPublished: false,
     __v: 0
 }

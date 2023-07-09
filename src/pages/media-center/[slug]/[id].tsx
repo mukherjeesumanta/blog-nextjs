@@ -40,10 +40,10 @@ const Article: FC<ArticleDetail> = ({ articleData }) => {
                     title={<>{articleObj.enTitle}</>}
                 />
                 <section className={styles['article-parallax-image']}>
-                    <Image
-                        src={topImage}
+                    <img
+                        src={articleObj.bannerUrl}
                         alt="Wide clouds"
-                        className="h-[45vh] object-cover"
+                        className="h-[45vh] object-cover w-full"
                     />
                 </section>
                 <section className={styles['article-content']}>
@@ -71,6 +71,11 @@ export const getServerSideProps: GetServerSideProps = async ({
         _id: params!.id,
         isPublished: true
     })
+    if(!articleData) {
+        return {
+            notFound: true
+        }
+    }
     return {
         props: {
             articleData: JSON.stringify(articleData)

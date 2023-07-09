@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import Head from 'next/head'
-import Image from 'next/image'
+import { getSession, GetSessionParams } from 'next-auth/react'
 import { GetServerSideProps } from 'next/types'
 import draftToHtml from 'draftjs-to-html'
 import connectMongo from '@/database/conn'
@@ -40,10 +40,10 @@ const Article: FC<ArticleDetail> = ({ articleData }) => {
                     title={<>{articleObj.enTitle}</>}
                 />
                 <section className={styles['article-parallax-image']}>
-                    <Image
-                        src={topImage}
+                    <img
+                        src={articleObj.bannerUrl}
                         alt="Wide clouds"
-                        className="h-[45vh] object-cover"
+                        className="h-[45vh] object-cover w-full"
                     />
                 </section>
                 <section className={styles['article-content']}>
@@ -65,11 +65,27 @@ export const getServerSideProps: GetServerSideProps = async ({
     req,
     params
 }) => {
+    const session = await getSession({ req })
+
+    if (!session) {
+        return {
+            redirect: {
+                destination: '/admin/',
+                permanent: false
+            }
+        }
+    }
+
     await connectMongo().catch((error) => console.log(error))
     //console.log('params: ', params)
     const articleData = await ArticleModel.findOne({
         _id: params!.id
     })
+    if(!articleData) {
+        return {
+          notFound: true
+        }
+      }
     return {
         props: {
             articleData: JSON.stringify(articleData)

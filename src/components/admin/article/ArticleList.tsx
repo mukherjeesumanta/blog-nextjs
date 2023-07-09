@@ -16,8 +16,11 @@ import { setArticleListDashboard } from '@/globalRedux/admin/features/articleLis
 
 type ActionRendererProps = {
     value: string
+    data: {
+        isPublished: boolean
+    }
     deleteHandler: (articleId: string) => void
-    publishHandler: (articleId: string) => void
+    togglePublishHandler: (articleId: string, isPublished: boolean) => void
 }
 const ActionCellRenderer: FC<ActionRendererProps> = (props) => {
     const getActionHandler = (action: string) => {
@@ -30,9 +33,9 @@ const ActionCellRenderer: FC<ActionRendererProps> = (props) => {
                     props.deleteHandler(props.value)
                 }
                 break
-            case 'publish':
+            case 'togglepublish':
                 handler = () => {
-                    props.publishHandler(props.value)
+                    props.togglePublishHandler(props.value, props.data.isPublished)
                 }
                 break
         }
@@ -53,14 +56,14 @@ const ActionCellRenderer: FC<ActionRendererProps> = (props) => {
                 className="text-blue-600"
                 onClick={getActionHandler('delete')}
             >
-                Hide
+                Delete
             </Link>
             <Link
                 href="#"
                 className="text-blue-600"
-                onClick={getActionHandler('publish')}
+                onClick={getActionHandler('togglepublish')}
             >
-                Publish
+                {props.data.isPublished === true ? 'Unpublish' : 'Publish'}
             </Link>
         </div>
     )
@@ -94,47 +97,57 @@ const ArticleList: FC<ArticleListProps> = ({ title, articleListProp }) => {
             dispatch(setArticleListDashboard(newArticleList))
         }
     }
-    const publishHandler = (articleId: string) => {
-        alert('publish: ' + articleId)
+    const togglePublishHandler = async (articleId: string, isPublished: boolean) => {
+        //alert('publish: ' + articleId)
+        const res = await fetch(`/api/admin/article/toggle-publish`, {
+            method: 'PUT',
+            body: JSON.stringify({ _id: articleId, isPublished: !isPublished }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8'
+            }
+        })
+
+        //TODO: update the particular record in store with id
+        if (res.ok) {
+            const newArticleList = articleList.filter((article) => article._id !== articleId)
+            dispatch(setArticleListDashboard(newArticleList))
+        }
     }
 
     const usrRenderer = (props: { value: ReactNode }) => {
-        return <p>{props.value}</p>
+        return <span>{props.value}</span>
     }
     const dateRenderer = (props: { value: ReactNode }) => {
         const date = new Date(props.value as string)
-        return <p>{moment(date).format('D-MMM-YYYY')}</p>
+        return <span>{moment(date).format('D-MMM-YYYY')}</span>
     }
     const publishRenderer = (props: { value: ReactNode }) => {
-        return <p>{String(props.value)}</p>
+        return <span>{String(props.value)}</span>
     }
     const columnDefs = [
         {
             headerName: 'Title',
-            /* autoHeight: true, */
-            /* field: 'articleTitleEn', */
+            autoHeight: true,
+            field: 'enTitle',
             flex: 1.5,
-            resizable: true,
+            resizable: true/* ,
             cellRenderer: (props: { data: ArticleType }) => {
                 return (
                     <>
                         <p className={`${styles['arial']}`}>
                             {props.data.enTitle}
                         </p>
-                        <p className={`${styles['noto']}`}>
-                            {props.data.arTitle}
-                        </p>
                     </>
                 )
-            }
+            } */
         },
         {
             headerName: 'Meta Description',
-            /* autoHeight: true, */
-            /* field: 'metaDescriptionEn', */
+            autoHeight: true,
+            field: 'enMetaDesc',
             flex: 1.5,
             resizable: true,
-            cellRenderer: (props: { data: ArticleType }) => {
+            /* cellRenderer: (props: { data: ArticleType }) => {
                 //console.log(props)
                 return (
                     <>
@@ -146,28 +159,28 @@ const ArticleList: FC<ArticleListProps> = ({ title, articleListProp }) => {
                         </p>
                     </>
                 )
-            }
+            } */
         },
         {
             headerName: 'Created By',
             field: 'createdBy',
             flex: 1.5,
             resizable: true,
-            cellRenderer: usrRenderer
+            /* cellRenderer: usrRenderer */
         },
         {
             headerName: 'Created At',
             field: 'createdAt',
             flex: 1,
             resizable: true,
-            cellRenderer: dateRenderer
+            /* cellRenderer: dateRenderer */
         },
         {
             headerName: 'Status',
             field: 'isPublished',
             flex: 0.8,
             resizable: true,
-            cellRenderer: publishRenderer
+            /* cellRenderer: publishRenderer */
         },
         {
             headerName: 'Action',
@@ -176,7 +189,7 @@ const ArticleList: FC<ArticleListProps> = ({ title, articleListProp }) => {
             cellRenderer: ActionCellRenderer,
             cellRendererParams: {
                 deleteHandler,
-                publishHandler
+                togglePublishHandler
             }
         }
     ]

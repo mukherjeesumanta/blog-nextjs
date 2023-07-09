@@ -11,7 +11,7 @@ import { toShortFormat } from '@/lib/utils'
 import { ArticleThumbnailListType, ArticleThumbnailType } from '@/types'
 import articleImage3 from '@/assets/articles/5may23thumbnail.jpg'
 import styles from '@/components/articles-section/ArticlesSection.module.css'
-import calendarIcon from '@/assets/calendar-icon.svg'
+import calendarIcon from '@/assets/img/calendar-icon.svg'
 
 
 
@@ -32,7 +32,7 @@ const ArticlesSection: FC<{articles: string}> = ({ articles }) => {
                     className={`${styles['article__card_container']} wow animate__animated animate__fadeIn`}
                 >
                     <div className={styles['article__card-image']}>
-                        <Image src={articleImage3} alt="article three" />
+                        <img src={article.thumbnailUrl} alt="article thumbnail image" />
                     </div>
                     <div className={styles['article__card-desc']}>
                         <p>
@@ -41,7 +41,7 @@ const ArticlesSection: FC<{articles: string}> = ({ articles }) => {
                     </div>
                     <div className={styles['article__card-footer']}>
                         <Image
-                            className="ltr:mr-[1rem] rtl:ml-[1rem]"
+                            className="ltr:mr-[1rem] rtl:ml-[1rem] h-6 w-6"
                             src={calendarIcon}
                             alt="calendar icon"
                         />

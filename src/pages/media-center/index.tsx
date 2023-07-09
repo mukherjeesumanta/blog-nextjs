@@ -63,7 +63,8 @@ export async function getServerSideProps() {
             enSlug: 1,
             createdAt: 1,
             createdBy: 1,
-            isPublished: 1
+            isPublished: 1,
+            thumbnailUrl: 1
         }
     )
 

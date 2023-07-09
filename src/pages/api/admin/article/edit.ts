@@ -14,20 +14,30 @@ export default async function handler(
     res.json({ success: false, error: 'Connection Failed...!' })
   )
 
-  if (req.method === 'PUT') {
+  if (req.method === 'POST') {
     if (!req.body)
       return res.status(404).json({ error: "Don't have form data...!" })
-    const { _id, enContent, arContent } = req.body
 
-    console.log(req.body)
+    const {
+      _id,
+      enTitle,
+      enSlug,
+      enMetaDesc,
+      enContent,
+      thumbnailUrl,
+      bannerUrl,
+      isPublished
+    } = req.body
     const article = await Article.findOneAndUpdate(
       { _id },
       {
-        ...req.body,
+        enTitle,
+        enSlug,
+        enMetaDesc,
+        thumbnailUrl,
+        bannerUrl,
+        isPublished,
         enContent: JSON.stringify(enContent),
-        arContent: JSON.stringify(arContent),
-        lastUpdatedBy: session?.user?.email,
-        lastUpdatedAt: new Date().toISOString(),
       }
     )
     res.status(201).json({ success: true, article })
@@ -36,7 +46,7 @@ export default async function handler(
       .status(500)
       .json({
         success: false,
-        message: 'HTTP method not valid only POST Accepted'
+        message: 'Something went wrong'
       })
   }
 }

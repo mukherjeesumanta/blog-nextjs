@@ -19,28 +19,24 @@ export default async function handler(
       return res
         .status(404)
         .json({ success: false, error: "Don't have form data...!" })
-    const { enTitle,
+    const {
+      enTitle,
       enSlug,
       enMetaDesc,
       enContent,
-      arTitle,
-      arSlug,
-      arMetaDesc,
-      arContent } = req.body
-    console.log(req.body)
+      thumbnailUrl,
+      bannerUrl
+    } = req.body
+    console.log('request', typeof req.body)
     const article = await Article.create({
       enTitle,
       enSlug,
       enMetaDesc,
       enContent: JSON.stringify(enContent),
-      arTitle,
-      arSlug,
-      arMetaDesc,
-      arContent: JSON.stringify(arContent),
       createdBy: session?.user?.email,
-      lastUpdatedBy: '',
       createdAt: new Date().toISOString(),
-      lastUpdatedAt: '',
+      thumbnailUrl,
+      bannerUrl,
       isPublished: false
     })
     res.status(201).json({ success: true, article })
@@ -49,7 +45,7 @@ export default async function handler(
       .status(500)
       .json({
         success: false,
-        message: 'HTTP method not valid only POST Accepted'
+        message: 'Something went wrong.'
       })
   }
 }

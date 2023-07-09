@@ -49,6 +49,12 @@ export const getServerSideProps: GetServerSideProps = async ({
   await connectMongo().catch((error) => console.log(error))
   //console.log(params!.id)
   const article = await Article.findOne({ _id: params!.id })
+  //console.log(article)
+  if(!article) {
+    return {
+      notFound: true
+    }
+  }
   return {
     props: {
       session,

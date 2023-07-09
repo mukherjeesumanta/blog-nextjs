@@ -5,17 +5,12 @@ const articleSchema = new Schema({
     enSlug: String,
     enMetaDesc: String,
     enContent: String,
-    arTitle: String,
-    arSlug: String,
-    arMetaDesc: String,
-    arContent: String,
     createdBy: String,
     createdAt: Date,
-    lastUpdatedBy: String,
-    lastUpdatedAt: String,
-    /* isPublished: Boolean, */
-
-    status: ['draft', 'published', 'hidden']
+    isPublished: Boolean,
+    thumbnailUrl: String,
+    bannerUrl: String
+    /* status: ['draft', 'published', 'hidden'] */
 })
 
 const Article = models.article || model('article', articleSchema);

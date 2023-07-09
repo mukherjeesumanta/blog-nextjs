@@ -4,10 +4,10 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import MenuList from '@/components/menu-list/MenuList'
 
-import menuIcon from '@/assets/menu.svg'
+import menuIcon from '@/assets/img/menu.svg'
 import styles from '@/components/mobile-nav/MobileNav.module.css'
 import logoEn from '@/assets/img/logo-header.jpg'
-import closeIcon from '@/assets/close-icon.svg'
+import closeIcon from '@/assets/img/close-icon.svg'
 
 const MobileNavScreen = ({ onClose }: { onClose: () => void }) => {
   const year = new Date().getFullYear()
@@ -19,7 +19,7 @@ const MobileNavScreen = ({ onClose }: { onClose: () => void }) => {
   return (
     <div className={`${styles['mobile-nav__screen']}`}>
       <div className={styles['mobile-nav__screen-logo']}>
-        <Image src={logo} width={200} height={55} alt="logo" />
+        
         <button type="button" onClick={onClose}>
           <Image src={closeIcon} alt="menu close icon" width={30} height={30} />
         </button>

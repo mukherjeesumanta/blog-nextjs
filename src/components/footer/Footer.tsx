@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-
+import { SocialIcon } from "react-social-icons";
 import styles from '@/components/footer/Footer.module.css'
-import linkedInLogo from '@/assets/linkedin.svg'
+
 
 const menuContent = {
   en: {
@@ -33,28 +33,21 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div
-          className={`${styles['footer__handles']} ${styles['footer__handles-mobile']}`}
-        >
-          <Link
-            href="https://www.linkedin.com/in/sumanta-mukherjee-18a88b21/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image src={linkedInLogo} alt="LinkedIn page" />
-          </Link>
-          {/* <Link href="/about-us">
-          <Image src={twitterInLogo} alt="Twitter" />
-        </Link> */}
-        </div>
+        
         <div className={styles['footer__handles']}>
-          <Link
-            href="https://www.linkedin.com/in/sumanta-mukherjee-18a88b21/"
+          
+          <SocialIcon
+            url="https://www.linkedin.com/in/sumanta-mukherjee-18a88b21/"
+            fgColor="gray"
+            bgColor="transparent"
             target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image src={linkedInLogo} alt="LinkedIn page" />
-          </Link>
+          />
+          <SocialIcon
+            url="https://www.facebook.com/its.sumanta"
+            fgColor="gray"
+            bgColor="transparent"
+            target="_blank"
+          />
           {/* <Link href="/about-us">
           <Image src={twitterInLogo} alt="Twitter" />
         </Link> */}

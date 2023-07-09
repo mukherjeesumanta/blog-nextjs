@@ -1,3 +1,4 @@
+import axios from 'axios';
 
 export const toShortFormat = function (dateInput: Date | string, lang: 'en' | 'ar') {
   const date = new Date(dateInput)
@@ -33,3 +34,23 @@ export const xssIgnoreTags = {
       hr: []
   }
 }
+
+export const uploadImage = async (file: File) => {
+  const formData = new FormData();
+  formData.append("articleImage", file);
+
+  const config = {
+    headers: { "content-type": "multipart/form-data" },
+  };
+
+  const response = await axios.post(
+    "/api/admin/article/upload",
+    formData,
+    config
+  );
+  //console.log(response, curFiles[0]);
+  if (response.status === 200) {
+    return response.data.url;
+  }
+  return "";
+};

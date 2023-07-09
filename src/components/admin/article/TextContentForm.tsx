@@ -1,6 +1,6 @@
 'use client'
 
-import { FC, FormEvent } from 'react'
+import React, { FC, FormEvent } from 'react'
 import MyEditor from '@/components/admin/my-editor/MyEditor'
 import { useDispatch, useSelector } from 'react-redux'
 import { setArticleDetails } from '@/globalRedux/admin/features/articlesSlice'
@@ -46,7 +46,8 @@ const TextContentForm: FC<ArticleFormProps> = (props) => {
         )
     }
 
-    const enPreviewHandler = () => {
+    const enPreviewHandler = (event: React.MouseEvent) => {
+        event.preventDefault()
         props.onEngPreviewClick()
     }
 

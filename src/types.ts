@@ -54,21 +54,14 @@ export interface EnContentType {
     enContentState: RawDraftContentState
     enContent: string
 }
-export interface ArContentType {
-    arTitle: string
-    arSlug: string
-    arMetaDesc: string
-    arContentState: RawDraftContentState
-    arContent: string
-}
 
-export type ArticleType = EnContentType & ArContentType & {
+export type ArticleType = EnContentType & {
     _id: string
     createdBy: string
     createdAt: string
-    lastUpdatedBy: string
-    lastUpdatedAt: string
     isPublished: boolean
+    thumbnailUrl: string,
+    bannerUrl: string
     __v: number
 }
 
@@ -79,15 +72,13 @@ export interface FormValues {
     articleDescription: string
     createdAt?: string
     createdBy?: string
-    lastUpdatedAt?: string
-    lastUpdatedBy?: string
 }
 
 export type ArticleThumbnailType = {
     _id: string
     enTitle: string
     enSlug: string
-    arTitle: string
+    thumbnailUrl: string
     createdAt: string
 }
 export type ArticleThumbnailListType = {

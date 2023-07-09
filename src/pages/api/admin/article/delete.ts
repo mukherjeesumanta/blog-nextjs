@@ -25,7 +25,7 @@ export default async function handler(
       .status(500)
       .json({
         success: false,
-        message: 'HTTP method not valid only POST Accepted'
+        message: 'Something went wrong.'
       })
   }
 }
