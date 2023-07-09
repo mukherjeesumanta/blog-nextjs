@@ -1,0 +1,68 @@
+.imgStyle {
+  width: 50%;
+  background-image: url('../assets/img/comp.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.form_sec {
+  width: 50%;
+  background-color: #F5F8FF;
+  padding: 3rem;
+}
+
+.title h3 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 40px;
+  padding-top: 1.5rem;
+}
+
+.input_group {
+  /* background-color: #fff;
+  border: 0;
+  border-bottom: solid #004940 2px; */
+}
+
+.input_text {
+  @apply w-full py-4 px-6 bg-white;
+  @apply focus:outline-none border-none;
+  border: 0;
+  border-bottom: solid #004940 2px;
+  color: var(--primary-color);
+}
+.input_text::placeholder {
+  color: var(--primary-color);
+  opacity: 1; /* Firefox */
+}
+.input_text::-ms-input-placeholder { /* Microsoft Edge */
+  color: var(--primary-color);
+}
+
+.button {
+  @apply w-full py-2.5 text-gray-50 text-lg tracking-[0.16rem] uppercase;
+  background-color: var(--primary-color);
+}
+
+.button:hover {
+  background-color: var(--primary-color-light);
+}
+
+.button_custom {
+  @apply w-full border py-3 flex justify-center gap-2 hover:bg-gray-200;
+}
+
+.input_text+* {
+  color: #cbd5e1;
+}
+
+.input_text:focus+* {
+  color: #6366f1;
+}
+
+.input_text:not([type='email'])~span:hover * {
+  color: #6366f1;
+  cursor: pointer;
+}

@@ -1,0 +1,40 @@
+.banner {
+  /* background: linear-gradient(180deg, #00786a, #03dca4, #fff); */
+  background-image: url('../../assets/img/code.jpg');
+  padding: 0 var(--container-gutter) 0;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 600px;
+}
+
+.banner h1 {
+  color: #fff;
+  padding: 0 50px;
+}
+
+.banner p {
+  color: #fff;
+  padding: 0 50px;
+}
+
+@media screen and (max-width: 800px) {
+  .banner {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .banner h1 {
+    padding: 24px 0;
+  }
+
+  .banner p {
+    line-height: 28px;
+    padding: 0;
+  }
+}

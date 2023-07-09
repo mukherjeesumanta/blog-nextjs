@@ -1,0 +1,30 @@
+.bg-none {
+  background-color: #fff !important;
+}
+.logoImg {
+  background: url('../assets/img/logo-header.jpg') no-repeat;
+  background-size: auto 60%;
+  background-position: 1% center;
+  z-index: 1;
+}
+.dashboard {
+  @apply w-3/4 mx-auto;
+}
+
+.header {
+  background-color: #004940;
+}
+.borderGray {
+  border: solid gray 1px;
+}
+.new-article-btn {
+  background-color: var(--primary-color);
+}
+.dropdown {
+  right: 1.25rem;
+  background-color: #fff;
+  @apply rounded-sm
+}
+.dropdown li {
+  border: solid #ccc 1px;
+}

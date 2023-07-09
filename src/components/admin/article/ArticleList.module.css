@@ -1,0 +1,14 @@
+.aggrid-articles p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-overflow: ellipsis;
+  overflow: h;
+}
+.arial {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.noto {
+  font-family: 'Noto Kufi Arabic';
+}

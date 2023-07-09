@@ -1,27 +1,251 @@
 @tailwind base;
+
+/* Firefox */
+/* * {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary-color) var(--primary-color);
+} */
+
+/* Chrome, Edge, and Safari */
+/* *::-webkit-scrollbar {
+  width: 5px;
+}
+
+
+*::-webkit-scrollbar-track {
+  background: #303030;
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  /* border-radius: 14px; * /
+  /* border: 3px solid var(--primary-color); * /
+} */
+
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  color: #f7abba;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+:root {
+  --primary-color: rgba(36,36,36,1);
+  --primary-color-light: rgba(36,36,36, 0.8);;
+  --background-shade-surface: #f4f8ff;
+  --container-gutter: 100px;
+  --transition-duration: 0.2s;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: sans-serif;
+  font-style: normal;
+  color: var(--primary-color);
+}
+
+p,
+li,
+a,
+span,
+button {
+  color: var(--primary-color);
+  font-family: Arial, Helvetica, sans-serif
+}
+button:disabled,
+button.disabled,
+fieldset:disabled button {
+  opacity: 0.1;
+}
+
+p,
+a {
+  font-size: 1rem;
+  line-height: 24px;
+}
+
+main {
+  overflow: hidden;
+}
+
+html,
+body,
+#__next,
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  padding-left: var(--container-gutter) !important;
+  padding-right: var(--container-gutter) !important;
+}
+
+html {
+  /* background-color: var(--primary-color); */
+}
+
+.rtl {
+  direction: rtl;
+  font-family: 'Noto Kufi Arabic', sans-serif;
+}
+
+.rtl h1,
+.rtl h2,
+.rtl h3,
+.rtl h4,
+.rtl h5,
+.rtl h6,
+.rtl p,
+.rtl li,
+.rtl a,
+.rtl span,
+.rtl button {
+  font-family: 'Noto Kufi Arabic', sans-serif;
+}
+
+h1 {
+  font-size: 6rem !important;
+  line-height: 104px !important;
+}
+
+h2 {
+  font-size: 3.5rem !important;
+  line-height: 72px !important;
+}
+
+@media screen and (max-width: 1700px) {
+  h1 {
+    font-size: 5.375rem !important;
+    line-height: 94px !important;
+  }
+
+  h2 {
+    font-size: 3rem !important;
+    line-height: 60px !important;
+  }
+}
+@media screen and (max-width: 1360px) {
+  h1 {
+    font-size: 4.75rem !important;
+    line-height: 84px !important;
+  }
+
+  h2 {
+    font-size: 2.75rem !important;
+    line-height: 52px !important;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@media screen and (max-width: 991px) {
+  h1 {
+    font-size: 3.5rem !important;
+    line-height: 64px !important;
+  }
+
+  h2 {
+    font-size: 2rem !important;
+    line-height: 40px !important;
+  }
 }
+@media screen and (max-width: 500px) {
+  h1 {
+    font-size: 3rem !important;
+    line-height: 56px !important;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+    line-height: 32px !important;
+  }
+}
+
+@media screen and (max-width: 1180px) {
+  :root {
+    --container-gutter: 50px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  :root {
+    --container-gutter: 20px;
+  }
+
+  .custom-parallax {
+    will-change: auto !important;
+    transform: initial !important;
+  }
+}
+
+body::-webkit-scrollbar {
+  width: 8px; /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: #f5f8ff; /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(100, 99, 99); /* color of the scroll thumb */
+  opacity: 0.5;
+  border-radius: 20px; /* roundness of the scroll thumb */
+  /* border: 3px solid #F5F8FF; */ /* creates padding around scroll thumb */
+  border: 0;
+}
+/* body {
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin;
+} */

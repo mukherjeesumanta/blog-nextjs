@@ -1,0 +1,35 @@
+.media-image {
+  padding: var(--container-gutter);
+  background-color: var(--background-shade-surface);
+}
+
+.media-image img {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.articles {
+  margin-top: -1px;
+  background-color: var(--background-shade-surface);
+  padding: var(--container-gutter) var(--container-gutter);
+}
+
+.articles h2 {
+  margin-bottom: 24px;
+}
+
+@media screen and (max-width: 800px) {
+  .articles {
+    padding-bottom: 64px;
+  }
+
+  .articles h2 {
+    margin-bottom: 0;
+    padding: 64px 0 32px;
+  }
+
+  .media-image img {
+    width: 100%;
+  }
+}
